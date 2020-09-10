@@ -1,16 +1,30 @@
-language: generic
-sudo: required
+language: node_js
+
+node_js:
+    - 'node'
 
 services:
     - docker
 
-before_install:
-    - docker build -t tyler/whatsapp-clone -f Dockerfile.dev .
-
-script:
-    - docker run -e CI=true tyler/whatsapp-clone npm run test
-
-after_success:
-    - docker build -t tyler/whatsapp-clone .
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-    -docker push tyler/whatsapp-clone
+jobs:
+    include:
+        - stage: test
+          script:
+            - npm install
+            - npm test
+        - stage: docker-deploy-image
+          script:
+            - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+            - docker build -t tyler/whatsapp-clone .
+            - docker push tyler/whatsapp-clone
+        - stage: deploy
+          script: skip
+          deploy: 
+            provider: elasticbeanstalk
+            acces_key_id: $AWS_ACCESS_KEY_ID
+            secret_access_key: $AWS_SECRET_ACCESS_KEY
+            region: 'us-west-1'
+            app: 'WhatsApp Clone'
+            env: 'WhatsappClone-env'
+            bucket_name: 'elasticbeanstalk-us-west-1-221103962736'
+            bucket_path: 'WhatsApp Clone'
