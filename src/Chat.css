@@ -8,7 +8,7 @@
     padding: 20px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid rgb(168, 168, 168);
+    border-bottom: 1px solid rgb(185, 185, 185);
 }
 
 .chat__headerInfo {
@@ -23,4 +23,41 @@
 
 .chat__headerInfo > p {
     color: gray;
+}
+
+.chat__body {
+    flex: 1;
+    background-image: url(https://res.cloudinary.com/practicaldev/image/fetch/s--WAKqnINn--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://thepracticaldev.s3.amazonaws.com/i/tw0nawnvo0zpgm5nx4fp.png);
+    background-repeat: repeat;
+    background-position: center;
+    padding: 30px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.chat__message {
+    position: relative;
+    font-size: 16px;
+    padding: 10px;
+    width: fit-content;
+    border-radius: 10px;
+    background-color: #ffffff;
+    margin-bottom: 30px;
+}
+
+.chat__reciever {
+    margin-left: auto;
+    background-color: #90ee90;
+}
+
+.chat__timestamp {
+    margin-left: 10px;
+    font-size: xx-small;
+}
+
+.chat__name {
+    position: absolute;
+    top: -15px;
+    font-weight: 800;
+    font-size: xx-small;
 }
