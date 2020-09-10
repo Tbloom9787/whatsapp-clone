@@ -14,9 +14,8 @@ jobs:
         - stage: docker-deploy-image
           script:
             - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-            - docker build -t tyler/whatsapp-clone .
-            - docker tag whatsapp-clone tbloom97/whatsapp-clone
-            - docker push tbloom97/whatsapp-clone
+            - docker build -t $DOCKER_USER/whatsapp-clone .
+            - docker push $DOCKER_USER/whatsapp-clone
         - stage: deploy
           script: skip
           deploy: 
