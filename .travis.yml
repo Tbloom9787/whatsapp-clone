@@ -11,7 +11,7 @@ jobs:
         - stage: test
           script:
             - npm install
-            - npm test
+            - npm test --passWithNoTests
         - stage: docker-deploy-image
           script:
             - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
