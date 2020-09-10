@@ -1,7 +1,8 @@
 import React from 'react';
 import "./Chat.css"
 import { Avatar, IconButton } from "@material-ui/core";
-import { SearchOutlined, AttachFile, MoreVert } from '@material-ui/icons';
+import { SearchOutlined, AttachFile, MoreVert, SettingsInputAntenna, Mic } from '@material-ui/icons';
+import InsertEmoticon from "@material-ui/icons/InsertEmoticon";
 
 function Chat() {
     return (
@@ -50,6 +51,20 @@ function Chat() {
                         { new Date().toUTCString() } 
                     </span>
                 </p>
+            </div>
+
+            <div className="chat__footer">
+                <InsertEmoticon />
+                <form>
+                    <input 
+                        placeholder="Type a message"
+                        type="text"
+                    />
+                    <button type="submit">
+                        Send a message
+                    </button>
+                </form>
+                <Mic />
             </div>
         </div>
     );
