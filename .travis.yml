@@ -24,6 +24,6 @@ jobs:
             secret_access_key: $AWS_SECRET_ACCESS_KEY
             region: 'us-west-1'
             app: 'WhatsApp Clone'
-            env: 'WhatsappClone-env'
+            env: 'WhatsappClone-env-1'
             bucket_name: 'elasticbeanstalk-us-west-1-221103962736'
             bucket_path: 'WhatsApp Clone'
