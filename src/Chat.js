@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Chat.css"
 import { Avatar, IconButton } from "@material-ui/core";
-import { SearchOutlined, AttachFile, MoreVert, SettingsInputAntenna, Mic } from '@material-ui/icons';
+import { SearchOutlined, AttachFile, MoreVert, Mic } from '@material-ui/icons';
 import InsertEmoticon from "@material-ui/icons/InsertEmoticon";
 
 function Chat() {
