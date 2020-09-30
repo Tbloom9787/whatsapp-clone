@@ -1,8 +1,8 @@
 FROM node:alpine
 
-WORKDIR /app
+WORKDIR /app/frontend
 
-COPY package.json /app
+COPY package.json /app/frontend
 
 RUN npm install && npm cache verify
 
