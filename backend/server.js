@@ -1,10 +1,20 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import Pusher from "pusher";
 import Messages from './Messages.js';
 
 // Config
 const app = express();
 const port = process.env.PORT || 8000;
+
+// Pusher message channel
+var pusher = new Pusher({
+    appId: '1083531',
+    key: '952297ec76be6bbfc245',
+    secret: '5c8795a65bf80b596aaf',
+    cluster: 'us3',
+    encrypted: true
+});
 
 // Middleware
 app.use(express.json());
@@ -17,9 +27,20 @@ mongoose.connect(connection_url, {
     useUnifiedTopology: true
 });
 
-// Routes
-app.get('/', (req,res)=>res.status(200).send('hello world'));
+const db = mongoose.connection;
 
+db.once('open', () => {
+    console.log("Database connected...");
+
+    const msgCollection = db.collection('messageContent');
+    const changeStream = msgCollection.watch();
+
+    changeStream.on('change', (change) => {
+        console.log(change);
+    });
+});
+
+// Routes
 app.get('/messages/sync', (req, res) => {
     Messages.find((err, data) => {
         if (err) {
