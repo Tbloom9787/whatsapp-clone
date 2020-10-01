@@ -30,13 +30,25 @@ mongoose.connect(connection_url, {
 const db = mongoose.connection;
 
 db.once('open', () => {
-    console.log("Database connected...");
+    console.log('Database connected...');
 
-    const msgCollection = db.collection('messageContent');
+    const msgCollection = db.collection('messagecontents');
     const changeStream = msgCollection.watch();
 
     changeStream.on('change', (change) => {
         console.log(change);
+
+        if (change.operationType === 'insert') {
+            const messageDetails = change.fullDocument;
+            pusher.trigger('messages', 'inserted',
+            {
+                name: messageDetails.user,
+                message: messageDetails.message,
+            });
+        }
+        else {
+            console.log('Error within Pusher trigger');
+        }
     });
 });
 
