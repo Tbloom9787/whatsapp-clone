@@ -18,6 +18,11 @@ var pusher = new Pusher({
 
 // Middleware
 app.use(express.json());
+app.use((res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    next();
+});
 
 // DB Config
 const connection_url = 'mongodb+srv://admin:K57HRmKvLqWoPQS2@cluster0.ueg2j.mongodb.net/whatsappdb?retryWrites=true&w=majority';
@@ -42,7 +47,7 @@ db.once('open', () => {
             const messageDetails = change.fullDocument;
             pusher.trigger('messages', 'inserted',
             {
-                name: messageDetails.user,
+                name: messageDetails.name,
                 message: messageDetails.message,
             });
         }
