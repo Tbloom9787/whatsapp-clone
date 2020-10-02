@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import Pusher from "pusher";
 import Messages from './Messages.js';
-import Cors from 'cors';
+import cors from 'cors';
 
 // Config
 const app = express();
@@ -46,6 +46,8 @@ db.once('open', () => {
             {
                 name: messageDetails.name,
                 message: messageDetails.message,
+                timestamp: messageDetails.timestamp,
+                received: messageDetails.received
             });
         }
         else {
