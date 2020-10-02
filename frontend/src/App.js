@@ -9,6 +9,13 @@ function App() {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
+    axios.get('/messages/sync')
+    .then(response => {
+      setMessages(response.data);
+    });
+  }, []);
+
+  useEffect(() => {
     const pusher = new Pusher("952297ec76be6bbfc245", {
       cluster: "us3",
     });
@@ -30,7 +37,7 @@ function App() {
     <div className="app">
       <div className="app__body">
         <Sidebar />
-        <Chat />
+        <Chat messages={messages}/>
       </div>   
     </div>
   );

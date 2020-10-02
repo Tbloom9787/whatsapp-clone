@@ -28,7 +28,23 @@ function Chat({ messages }) {
                 </div>
             </div>
             <div className="chat__body">
-               
+                {messages.map((message) => (
+                    <p className={'chat__message ${message.received && "chat__receiver"}'}>
+                        <span className="chat__name"> {message.name} </span>
+                            {message.message}
+                        <span className="chat__timestamp"> 
+                            {new Date().toUTCString()} 
+                        </span> 
+                    </p>
+                ))}
+                
+                <p className="chat__message chat__receiver">
+                    <span className="chat__name">Tyler</span>
+                        This is a message
+                    <span className="chat__timestamp">
+                        {new Date().toUTCString()} 
+                    </span>
+                </p>
             </div>
 
             <div className="chat__footer">
