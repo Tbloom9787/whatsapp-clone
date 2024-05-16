@@ -1,5 +1,5 @@
 # WhatsApp Clone
-WhatsApp Clone is an in-depth implementation of creating a full-stack application based on the original WhatsApp UI and real-time messaging. The UI is implemented strictly in ReactDOM and CSS3, while the real-time messaging is done with Pusher. More is to be completed as there is testing of a CI/CD pipeline using Travis CI, Docker, and AWS. The application was built with the MERN Stack. 🔥
+WhatsApp Clone is a full-stack homage to the intuitive WhatsApp interface, this application replicates real-time messaging using Pusher for instant communication. Developed with the MERN stack, it combines React for the frontend with Node.js, Express, and MongoDB for backend operations, wrapped up with modern CSS3 for styling. Experience the familiar WhatsApp functionality in a web app designed for immediate message exchange. 🔥
 
 Demo image of UI:
 ![whatsapp-clone-ui](https://github.com/Tbloom9787/Whatsapp-clone/blob/master/demo/whatsapp-clone-ui.PNG)
